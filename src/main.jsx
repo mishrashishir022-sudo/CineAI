@@ -1,10 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './Index.css'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import ReactDOM  from 'react-dom/client'
+import './Index.css'
+import Header from './Components/Header.jsx'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import Body from './Components/Body.jsx'
+
+const Main= ()=>{
+  return(
+    <>
+    <Body/>
+    </>
+  )
+}
+
+
+const insert = ReactDOM.createRoot(document.querySelector('#root'))
+insert.render(<Main/>)
