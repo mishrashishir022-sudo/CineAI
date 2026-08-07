@@ -1,21 +1,20 @@
 import Header from "./Header";
-import { useState, useRef} from "react";
+import { useState, useRef } from "react";
 import { checkValidation } from "../utils/validate";
 const Login = () => {
-  const [toggle, setToggle]= useState(true)
-  const [isValid, setIsValid ] = useState(null);
-  const email= useRef(null)
-  const pass = useRef(null)
+  const [toggle, setToggle] = useState(true);
+  const [isValid, setIsValid] = useState(null);
+  const email = useRef(null);
+  const pass = useRef(null);
 
-  const handleValidation = ()=>{
-     
-    const checkForm = checkValidation(email.current.value, pass.current.value)
-    setIsValid(checkForm)
-  }
+  const handleValidation = () => {
+    const checkForm = checkValidation(email.current.value, pass.current.value);
+    setIsValid(checkForm);
+  };
 
-  const toggleSignInForm= ()=>{
-      setToggle(!toggle)
-  }
+  const toggleSignInForm = () => {
+    setToggle(!toggle);
+  };
   return (
     <>
       <Header />
@@ -27,15 +26,48 @@ const Login = () => {
         />
       </div>
       <div className="absolute top-0 min-h-screen w-full flex items-center justify-center">
-        <form className=" bg-black/80 flex flex-col text-white gap-8 p-10 pr-15 pl-15" onSubmit={ (e) => {e.preventDefault()}}>
-          <div className="text-2xl font-bold">{toggle==true?<p>Sign In</p>:<p>Sign Up</p> }</div>
-          {toggle==false&&<input className="h-10 bg-gray-800 opacity-100 p-2 outline-none" type="text" placeholder="username" />}
-          <input ref= {email} className="h-10 bg-gray-800 opacity-100 p-2 outline-none" type="E-mail" placeholder="E-mail" />
-          <input ref= {pass} className="h-10 bg-gray-800 opacity-100 p-2 outline-none" type="password" placeholder="Password" />
+        <form
+          className=" bg-black/80 flex flex-col text-white gap-8 p-10 pr-15 pl-15"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <div className="text-2xl font-bold">
+            {toggle == true ? <p>Sign In</p> : <p>Sign Up</p>}
+          </div>
+          {toggle == false && (
+            <input
+              className="h-10 bg-gray-800 opacity-100 p-2 outline-none"
+              type="text"
+              placeholder="username"
+            />
+          )}
+          <input
+            ref={email}
+            className="h-10 bg-gray-800 opacity-100 p-2 outline-none"
+            type="E-mail"
+            placeholder="E-mail"
+          />
+          <input
+            ref={pass}
+            className="h-10 bg-gray-800 opacity-100 p-2 outline-none"
+            type="password"
+            placeholder="Password"
+          />
           <div className="text-red-600">{isValid}</div>
-          <button className="bg-[#c31fe0] h-10 w-full rounded-[5px] cursor-pointer" onClick={handleValidation} >
-            {toggle==true?<p>Sign In</p>:<p>Sign Up</p> }</button>
-          <div className="cursor-pointer"onClick={toggleSignInForm} >{toggle==true?<p>New Here? Sign Up Now</p>:<p>Already User? Sign In</p> }</div>
+          <button
+            className="bg-[#c31fe0] h-10 w-full rounded-[5px] cursor-pointer"
+            onClick={handleValidation}
+          >
+            {toggle == true ? <p>Sign In</p> : <p>Sign Up</p>}
+          </button>
+          <div className="cursor-pointer" onClick={toggleSignInForm}>
+            {toggle == true ? (
+              <p>New Here? Sign Up Now</p>
+            ) : (
+              <p>Already User? Sign In</p>
+            )}
+          </div>
         </form>
       </div>
     </>
